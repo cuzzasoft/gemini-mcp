@@ -9,4 +9,7 @@
 // Importing dist/index.js directly as the entry point triggers only that
 // module's auto-running main() — one server, one set of responses. No upstream
 // patch needed; we just bypass cli.js.
-import '@houtini/gemini-mcp/dist/index.js';
+// The package's `exports` map defines only `.` (→ dist/index.js). Subpath
+// imports like `@houtini/gemini-mcp/dist/index.js` are blocked with
+// ERR_PACKAGE_PATH_NOT_EXPORTED, so import the bare package — same target.
+import '@houtini/gemini-mcp';

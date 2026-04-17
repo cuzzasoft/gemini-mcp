@@ -21,11 +21,13 @@ Both servers bind `StdioServerTransport` to the same `process.stdin` / `process.
 
 Don't invoke `cli.js`. Just import `dist/index.js` directly — its own `main().catch(...)` runs once and there's no second `new GeminiMcpServer()` anywhere. One server, one transport, works.
 
-`bin.mjs` is a one-liner:
+`bin.mjs` is effectively a one-liner:
 
 ```js
-import '@houtini/gemini-mcp/dist/index.js';
+import '@houtini/gemini-mcp';
 ```
+
+(The package's `exports` map restricts subpath imports, but `.` already resolves to `dist/index.js`.)
 
 ## Usage
 
